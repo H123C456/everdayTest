@@ -1,34 +1,34 @@
 package com.ruxi.testNove;
 
-import java.util.*;
 
 public class CountPoints {
 
     public static void main(String[] args) {
+
         String rings = "B0B6G0R6R0R6G9";
-        String regex = "[0-9]";
-        String regex1 = "[A-Z]";
+        String[] split = rings.split("");
 
-
-        String[] letter = rings.split(regex);
-        rings.split(regex1)
-        Arrays.stream(letter).forEach(p-> System.out.print(p));
-        System.out.println();
-        Arrays.stream(num).forEach(p-> System.out.print(p));
-
-
-        List<String> testList = new ArrayList<>();
-
-        for (int i=0;i< num.length;i++){
-            if (num[i]==""){
-                continue;
+        int[][] arr = new int[10][3];
+        for (int i=0;i<rings.length();i+=2){
+            String color = split[i];
+            if (color.equals("R")){
+                arr[Integer.parseInt(split[i+1])][0]++;
+            }else if (color.equals("B")){
+                arr[Integer.parseInt(split[i+1])][1]++;
+            }else if (color.equals("G")){
+                arr[Integer.parseInt(split[i+1])][2]++;
             }
-            int i1 = Integer.parseInt(num[i]);
-            System.out.println(i1);
-
         }
 
+        int bar=0;
+        for (int i=0;i<10;i++){
 
+            if (arr[i][1]>0&&arr[i][2]>0&&arr[i][0]>0){
+                bar++;
+            }
+        }
+
+        System.out.println(bar);
 
     }
 }
